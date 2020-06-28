@@ -2,6 +2,7 @@
   "name": "koa-rethinkdb",
   "version": "0.1.0",
   "description": "",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "check": "npm run format && npm run lint",
