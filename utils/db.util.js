@@ -2,13 +2,14 @@
 
 const r = require('rethinkdb');
 
-exports.insertUser = async (connection, table, { email, password }) => {
-  const result = await r.table(table).insert([
-    {
-      email: email,
-      password: password,
-    }
-  ]).run(connection);
-
+/**
+ * Insert data into assigned table.
+ * @param {Object} connection RethinkDB connection instance.
+ * @param {String} table DB table to insert data into.
+ * @param {Array<Object>} data Array of objects to insert.
+ * @returns {Object} query result.
+ */
+exports.insert = async (connection, table, data) => {
+  const result = await r.table(table).insert(data).run(connection);
   return result;
 }
