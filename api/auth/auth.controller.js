@@ -11,7 +11,7 @@ exports.getToken = ctx => {
   ctx.body = { token };
 };
 
-exports.register = async (ctx) => {
+exports.register = async ctx => {
   const body = ctx.request.body;
 
   bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -26,11 +26,10 @@ exports.register = async (ctx) => {
       };
 
       const newUser = await db.insertUser(ctx.rdb, 'users', user);
-      console.log('newUser', newUser)
 
       const token = generateToken({ userID: newUser.generated_keys[0] });
       ctx.status = 200;
-      return ctx.body = { token };
+      return (ctx.body = { token });
     });
   });
 };

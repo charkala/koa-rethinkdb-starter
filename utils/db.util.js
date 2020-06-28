@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const r = require('rethinkdb');
 
@@ -10,6 +10,9 @@ const r = require('rethinkdb');
  * @returns {Object} query result.
  */
 exports.insert = async (connection, table, data) => {
-  const result = await r.table(table).insert(data).run(connection);
+  const result = await r
+    .table(table)
+    .insert(data)
+    .run(connection);
   return result;
-}
+};

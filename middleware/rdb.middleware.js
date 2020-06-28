@@ -6,8 +6,7 @@ module.exports = async (ctx, next) => {
     const conn = await r.connect(databaseConfig);
     ctx.rdb = conn;
     await next();
-  }
-  catch (err) {
+  } catch (err) {
     if (err.status >= 500) console.log('Error handler:', err);
     ctx.status = err.status || 500;
     ctx.body = {
